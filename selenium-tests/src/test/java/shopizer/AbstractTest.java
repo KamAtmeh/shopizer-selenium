@@ -15,7 +15,6 @@ public class AbstractTest {
     protected WebDriver driver;
     protected Actions actions;
     protected WebDriverWait wait;
-
     protected Logger log = LoggerFactory.getLogger(this.getClass());
     @BeforeEach
     public void setup() {

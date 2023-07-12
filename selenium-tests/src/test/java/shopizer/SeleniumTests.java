@@ -1,20 +1,16 @@
 package shopizer;
-
 import PageObject.PagePanier;
+import PageObject.PageTable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SeleniumTests extends AbstractTest {
 
     @Test
-    public void testPanier() throws Throwable{
+    public void testPanier(){
         assertEquals("Importa", driver.getTitle(), "[KO] Le titre de la page n'est pas correct");
         log.info("connexion réussi");
         PagePanier pagePanier = new PagePanier(driver);
@@ -43,6 +39,29 @@ public class SeleniumTests extends AbstractTest {
 
     @Test
     public void TestTable(){
+        assertEquals("Importa", driver.getTitle(), "[KO] Le titre de la page n'est pas correct");
+        log.info("connexion réussi");
+        log.info("page produit");
+        PageTable pageTable = new PageTable(driver);
+        WebElement menuProductElement = pageTable.menuProduct;
+        Assertions.assertNotNull(menuProductElement, "menuProduct n'est pas la");
+        log.info("le menu produit existe bien");
+        wait.until(ExpectedConditions.elementToBeClickable(pageTable.MenuTable)).click();
+        log.info("connection a la page table");
+        wait.until(ExpectedConditions.elementToBeClickable(pageTable.TheAsian)).click();
+        log.info("page info the Asian");
+        wait.until(ExpectedConditions.elementToBeClickable(pageTable.Coffee_Table_Accacia)).click();
+        log.info("page Coffee_Table_Accacia");
+        log.info("verification element description Coffee_Table_Accacia");
+        WebElement ProductAsian = pageTable.AsianDescription;
+        Assertions.assertNotNull(ProductAsian, "menu T n'est pas present");
+        log.info("verification element prix Coffee_Table_Accacia");
+        WebElement AsianPrice = pageTable.TableFirstProduct;
+        Assertions.assertNotNull(AsianPrice, "pas de prix");
+
+
+
+
 
     }
 
