@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-public class PageTable extends Header {
+public class PageTable extends PageHeader {
 
     // * Constructor ** //
     public PageTable(WebDriver driver){

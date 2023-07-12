@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-public class PagePanier extends Header {
+public class PagePanier extends PageHeader {
 
     // * Constructor ** //
     public PagePanier(WebDriver driver){
@@ -35,6 +35,9 @@ public class PagePanier extends Header {
 
     @FindBy(xpath = "//a[@href=\"/shopizer/shop/order/checkout.html\"]")
     public WebElement Proceedcheckout;
+
+    @FindBy(xpath = "//h1[normalize-space()=\"Revoir votre commande\"]")
+    public WebElement titreRecapPanier;
 
 
     //methode de recup en string

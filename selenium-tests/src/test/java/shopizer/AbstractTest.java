@@ -1,34 +1,40 @@
 package shopizer;
 
+import PageObject.IConstantes;
+import Utils.Logging;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
-import java.time.Duration;
+import static Utils.Toolbox.openBrowser;
 
-public class AbstractTest {
+public class AbstractTest extends Logging implements IConstantes {
 
+    /*
+     ********* INITIALIZE PARAMETERS ************
+     */
     protected WebDriver driver;
     protected Actions actions;
     protected WebDriverWait wait;
-    protected Logger log = LoggerFactory.getLogger(this.getClass());
+    //protected Logger log = LoggerFactory.getLogger(this.getClass());
+
+
+    /*
+     *********** DEFINE ACTIONS THAT TAKE PLACE BEFORE TESTING ***********
+     */
     @BeforeEach
     public void setup() {
 
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("http://192.168.102.195:8080/shopizer/shop");
-
+        LOGGER.info("******************************* SETUP *******************************");
+        LOGGER.info("Opening " + NAVIGATEUR + " browser");
+        driver = openBrowser(NAVIGATEUR, MAXIMIZE_DRIVER, IMP_WAIT, WINDOW_POS, WINDOW_SIZE, HEADLESS, URL);
+        LOGGER.info("Initialize explicit wait of " + EXP_WAIT + " seconds");
+        wait = new WebDriverWait(driver, EXP_WAIT);
+        LOGGER.info("Initialize Actions class");
         actions = new Actions(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
-
 
     @AfterEach
     public void teardown() {
