@@ -98,9 +98,6 @@ public class Toolbox extends Logging {
     }
 
 
-
-    //div[@class="loadingoverlay"]
-
     // function to wait for page to load
     public static void waitForPageToLoad(WebDriverWait wait){
         try{
@@ -110,6 +107,7 @@ public class Toolbox extends Logging {
 
         }
     }
+
 
     // function to click on element after waiting
     public static void clickElement(WebDriverWait wait, WebElement element) throws Throwable {

@@ -17,8 +17,6 @@ public class AbstractTest extends Logging implements IConstantes {
     protected WebDriver driver;
     protected Actions actions;
     protected WebDriverWait wait;
-    //protected Logger log = LoggerFactory.getLogger(this.getClass());
-
 
     /*
      *********** DEFINE ACTIONS THAT TAKE PLACE BEFORE TESTING ***********
@@ -36,6 +34,9 @@ public class AbstractTest extends Logging implements IConstantes {
 
     }
 
+    /*
+     *********** DEFINE ACTIONS THAT TAKE PLACE AFTER TESTING ***********
+     */
     @AfterEach
     public void teardown() {
         driver.close();
