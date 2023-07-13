@@ -14,7 +14,7 @@ import static com.eql.shopizer.utils.Toolbox.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ScreenshotOnFailureExtension.class)
-public class SeleniumTests extends AbstractTest {
+public class SeleniumTests2 extends AbstractTest {
 
     String quantiteProduit = "2";
 
@@ -32,7 +32,7 @@ public class SeleniumTests extends AbstractTest {
         selectProduct(wait, "Asian rosewood console");
         waitForPageToLoad(wait);
         LOGGER.info("Vérification que le nombre d'articles dans le panier est de 1");
-        assertEquals("Panier d'achat (1)", pageAccueil.panier.getText(), "Le panier d'achat n'a pas été incrémenté");
+        assertEquals("Panier d'achat (1)", pageAccueil.panier.getText());
         LOGGER.info("Produit ajouté au panier");
         LOGGER.info("Clic sur paiement pour accéder au panier");
         moveToElement(actions, pageAccueil.panier);
@@ -41,18 +41,17 @@ public class SeleniumTests extends AbstractTest {
         PagePanier pagePanier = new PagePanier(driver);
         assertEquals("Revoir votre commande", pagePanier.titreRecapPanier.getText(), "[KO] Le titre de la page du panier n'est pas bon");
         LOGGER.info("Vérification de la présence du tableau récapitulaif de la commande");
-        assertTrue(pagePanier.tableauRecapPanier.isDisplayed(), "[KO] Le tableau récapitulatif n'est pas affiché");
+        assertTrue(pagePanier.tableauRecapPanier.isDisplayed());
         LOGGER.info("Vérification de la présence d'un champ quantité");
-        assertTrue(pagePanier.modifProduct.isDisplayed(), "[KO] Le champ quantité n'est pas affiché");
+        assertTrue(pagePanier.modifProduct.isDisplayed());
         LOGGER.info("Vérification de la présence du prix du produit");
-        assertTrue(pagePanier.prixArticlePanier.isDisplayed(), "[KO] Le champ prix du produit n'est pas affiché");
+        assertTrue(pagePanier.prixArticlePanier.isDisplayed());
         LOGGER.info("Vérification de la présence du total de la section");
-        assertTrue(pagePanier.totalArticlePanier.isDisplayed(), "[KO] Le champ total n'est pas affiché");
+        assertTrue(pagePanier.totalArticlePanier.isDisplayed());
         LOGGER.info("Doubler la quantité de l'article choisi");
         setValue(wait, pagePanier.modifProduct, quantiteProduit);
-        LOGGER.info("Vérification que le nombre de produit est {}",quantiteProduit);
-        String valuemodifProduct=pagePanier.modifProduct.getAttribute("value");
-        assertEquals(quantiteProduit, valuemodifProduct, String.format("[KO] La quantité du produit n'est pas égale à 2 mais elle vaut actuellement : %s", valuemodifProduct));
+        LOGGER.info("Vérification que le nombre de produit est " + quantiteProduit);
+        assertEquals(quantiteProduit, pagePanier.modifProduct.getAttribute("value"), "[KO] La quantité du produit n'est pas égale à 2");
         LOGGER.info("Clic sur le bouton RECALCULER");
         clickElement(wait, pagePanier.recalculer);
         LOGGER.info("Vérification que le sous-total est bon");
@@ -92,5 +91,7 @@ public class SeleniumTests extends AbstractTest {
         assertNotNull(AsianPrice, "pas de prix");
 
     }
+    public void verificationTableTest(){
 
+    }
 }

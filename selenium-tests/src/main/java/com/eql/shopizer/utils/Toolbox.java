@@ -97,9 +97,9 @@ public class Toolbox extends Logging {
 
     // function to wait for page to load
     public static void waitForPageToLoad(WebDriverWait wait){
-        try{
-            WebElement loading = driver.findElement(By.xpath("//div[@class=\"loadingoverlay\"]"));
-            wait.until(ExpectedConditions.invisibilityOf(loading));
+        try{ wait.until(driver->ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class=\"loadingoverlay\"]")));
+//            WebElement loading = driver.findElement(By.xpath("//div[@class=\"loadingoverlay\"]"));
+//            wait.until(ExpectedConditions.invisibilityOf(loading));
         } catch (NoSuchElementException e) {
 
         }
@@ -126,6 +126,14 @@ public class Toolbox extends Logging {
 
 
     // function to fill fields with text after clearing them
+
+    /**
+     *
+     * @param wait
+     * @param element
+     * @param string
+     * @throws Throwable
+     */
     public static void setValue(WebDriverWait wait, WebElement element, String string) throws Throwable {
         // Click on element
         clickElement(wait, element);
