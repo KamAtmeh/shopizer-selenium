@@ -4,16 +4,12 @@ import com.eql.shopizer.extensions.ScreenshotOnFailureExtension;
 import com.eql.shopizer.pageobject.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import static com.eql.shopizer.utils.Toolbox.clickElement;
 import static com.eql.shopizer.utils.Toolbox.getText;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ScreenshotOnFailureExtension.class)
 public class TableTest extends AbstractTest {
-
     @Test
     public void verificationTableTest() throws Throwable {
         LOGGER.info("Vérification du titre du site");
@@ -39,5 +35,4 @@ public class TableTest extends AbstractTest {
         assertTrue(pageTable.TableFirstProduct.isDisplayed(), "Le prix est affiché");
         LOGGER.info("[OK] Fin du test");
     }
-
 }
