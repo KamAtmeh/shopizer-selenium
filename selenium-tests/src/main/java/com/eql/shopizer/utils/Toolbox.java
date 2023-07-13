@@ -105,7 +105,6 @@ public class Toolbox extends Logging {
         }
     }
 
-
     // function to click on element after waiting
     public static void clickElement(WebDriverWait wait, WebElement element) throws Throwable {
         boolean stale = true;
@@ -142,5 +141,17 @@ public class Toolbox extends Logging {
         actions.moveToElement(element).perform();
     }
 
+    public static void selectProduct(WebDriverWait wait, String product) throws Throwable {
+        String xpath = "//h3[@itemprop=\"name\" and text()=\"" + product + "\"]/ancestor::div[contains(@class,\"product-content\")]//a[text()=\"Ajouter au panier\"]";
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        clickElement(wait, element);
+    }
+
+    public static double getAmount(WebDriverWait wait, WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        String amountText = element.getText().replace("US$", "");
+        Double amount = Double.parseDouble(amountText);
+        return amount;
+    }
 
 }

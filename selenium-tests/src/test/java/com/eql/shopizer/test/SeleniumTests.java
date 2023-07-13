@@ -16,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ScreenshotOnFailureExtension.class)
 public class SeleniumTests extends AbstractTest {
 
+    String quantiteProduit = "2";
+
     @Test
     public void utilisationPanierTest() throws Throwable {
         LOGGER.info("Vérification du titre du site");
@@ -27,7 +29,7 @@ public class SeleniumTests extends AbstractTest {
         LOGGER.info("Vérification que le texte Ajouter au panier");
         assertEquals("Ajouter au panier", pageAccueil.product1.getText());
         LOGGER.info("Clic sur Ajouter au panier pour le 1er produit");
-        clickElement(wait, pageAccueil.product1);
+        selectProduct(wait, "Asian rosewood console");
         waitForPageToLoad(wait);
         LOGGER.info("Vérification que le nombre d'articles dans le panier est de 1");
         assertEquals("Panier d'achat (1)", pageAccueil.panier.getText());
@@ -38,14 +40,24 @@ public class SeleniumTests extends AbstractTest {
         LOGGER.info("Vérification titre de la page du panier");
         PagePanier pagePanier = new PagePanier(driver);
         assertEquals("Revoir votre commande", pagePanier.titreRecapPanier.getText(), "[KO] Le titre de la page du panier n'est pas bon");
+        LOGGER.info("Vérification de la présence du tableau récapitulaif de la commande");
+        assertTrue(pagePanier.tableauRecapPanier.isDisplayed());
+        LOGGER.info("Vérification de la présence d'un champ quantité");
+        assertTrue(pagePanier.modifProduct.isDisplayed());
+        LOGGER.info("Vérification de la présence du prix du produit");
+        assertTrue(pagePanier.prixArticlePanier.isDisplayed());
+        LOGGER.info("Vérification de la présence du total de la section");
+        assertTrue(pagePanier.totalArticlePanier.isDisplayed());
         LOGGER.info("Doubler la quantité de l'article choisi");
-        setValue(wait, pagePanier.modifProduct, "2");
-        LOGGER.info("Vérification que le nombre de produit est 2");
-        assertEquals("2", pagePanier.modifProduct.getAttribute("value"), "[KO] La quantité du produit n'est pas égale à 2");
+        setValue(wait, pagePanier.modifProduct, quantiteProduit);
+        LOGGER.info("Vérification que le nombre de produit est " + quantiteProduit);
+        assertEquals(quantiteProduit, pagePanier.modifProduct.getAttribute("value"), "[KO] La quantité du produit n'est pas égale à 2");
         LOGGER.info("Clic sur le bouton RECALCULER");
         clickElement(wait, pagePanier.recalculer);
+        LOGGER.info("Vérification que le sous-total est bon");
+        assertEquals(getAmount(wait, pagePanier.prixArticlePanier)*Double.parseDouble(quantiteProduit),getAmount(wait, pagePanier.soustotalPanier), "[KO] Le sous-total n'est pas correct");
         LOGGER.info("Vérification que le total est bon");
-        assertEquals("RECALCULER",pagePanier.recalculer.getText());
+        assertEquals(getAmount(wait, pagePanier.prixArticlePanier)*Double.parseDouble(quantiteProduit),getAmount(wait, pagePanier.totalPanier), "[KO] Le total n'est pas correct");
         LOGGER.info("Clic sur Proceed to checkout");
         clickElement(wait, pagePanier.Proceedcheckout);
         LOGGER.info("Vérification de l'ouverture de la page de paiement");
