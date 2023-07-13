@@ -20,7 +20,7 @@ public class SeleniumTests extends AbstractTest {
     public void utilisationPanierTest() throws Throwable {
         LOGGER.info("Vérification du titre du site");
         PageAccueil pageAccueil = new PageAccueil(driver);
-        assertEquals("Importa2", driver.getTitle(), "[KO] Le titre de la page n'est pas correct");
+        assertEquals("Importa", driver.getTitle(), "[KO] Le titre de la page n'est pas correct");
         LOGGER.info("Connexion réussie");
         LOGGER.info("Vérification que le panier est vide");
         assertEquals("Panier d'achat (0)", pageAccueil.panier.getText(), "[KO] L'affichage du titre du panier n'est pas correct");
