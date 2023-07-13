@@ -10,7 +10,7 @@ import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static com.eql.shopizer.pageobject.PageHeader.driver;
+import static com.eql.shopizer.pageobject.PageAbstract.driver;
 import static com.eql.shopizer.utils.Logging.className;
 
 public class ScreenshotOnFailureExtension implements TestExecutionExceptionHandler {

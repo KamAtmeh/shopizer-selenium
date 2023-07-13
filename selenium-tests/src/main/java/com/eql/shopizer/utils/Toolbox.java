@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import static com.eql.shopizer.pageobject.PageHeader.driver;
+import static com.eql.shopizer.pageobject.PageAbstract.driver;
 
 public class Toolbox extends Logging {
 
@@ -97,9 +97,10 @@ public class Toolbox extends Logging {
 
     // function to wait for page to load
     public static void waitForPageToLoad(WebDriverWait wait){
-        try{ wait.until(driver->ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class=\"loadingoverlay\"]")));
-//            WebElement loading = driver.findElement(By.xpath("//div[@class=\"loadingoverlay\"]"));
-//            wait.until(ExpectedConditions.invisibilityOf(loading));
+        try{
+            //wait.until(driver->ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class=\"loadingoverlay\"]")));
+            WebElement loading = driver.findElement(By.xpath("//div[@class=\"loadingoverlay\"]"));
+            wait.until(ExpectedConditions.invisibilityOf(loading));
         } catch (NoSuchElementException e) {
 
         }
@@ -128,7 +129,6 @@ public class Toolbox extends Logging {
     // function to fill fields with text after clearing them
 
     /**
-     *
      * @param wait
      * @param element
      * @param string
@@ -149,16 +149,23 @@ public class Toolbox extends Logging {
         actions.moveToElement(element).perform();
     }
 
-    public static void selectProduct(WebDriverWait wait, String product) throws Throwable {
-        String xpath = "//h3[@itemprop=\"name\" and text()=\"" + product + "\"]/ancestor::div[contains(@class,\"product-content\")]//a[text()=\"Ajouter au panier\"]";
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-        clickElement(wait, element);
+    public static String getText(WebDriverWait wait, WebElement element) {
+        String text = null;
+        Boolean stale = true;
+        while(stale){
+            try {
+                wait.until(ExpectedConditions.visibilityOf(element));
+                text = element.getText();
+                stale = false;
+            } catch (StaleElementReferenceException e) {
+                stale = true;
+            }
+        }
+        return text;
     }
 
     public static double getAmount(WebDriverWait wait, WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-        String amountText = element.getText().replace("US$", "");
-        Double amount = Double.parseDouble(amountText);
+        Double amount = Double.parseDouble(getText(wait, element).replace("US$", ""));
         return amount;
     }
 

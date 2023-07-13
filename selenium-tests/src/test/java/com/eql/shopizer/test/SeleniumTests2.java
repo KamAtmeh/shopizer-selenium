@@ -29,7 +29,7 @@ public class SeleniumTests2 extends AbstractTest {
         LOGGER.info("Vérification que le texte Ajouter au panier");
         assertEquals("Ajouter au panier", pageAccueil.product1.getText(), "[KO] Le texte Ajouter un panier n'est pas correct");
         LOGGER.info("Clic sur Ajouter au panier pour le 1er produit");
-        selectProduct(wait, "Asian rosewood console");
+        pageAccueil.selectProduct(wait, "Asian rosewood console");
         waitForPageToLoad(wait);
         LOGGER.info("Vérification que le nombre d'articles dans le panier est de 1");
         assertEquals("Panier d'achat (1)", pageAccueil.panier.getText());
@@ -91,7 +91,7 @@ public class SeleniumTests2 extends AbstractTest {
         assertNotNull(AsianPrice, "pas de prix");
 
     }
-    public void verificationTableTest(){
+/*    public void verificationTableTest(){
 
-    }
+    }*/
 }

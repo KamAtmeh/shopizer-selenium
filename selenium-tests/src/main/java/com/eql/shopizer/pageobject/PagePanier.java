@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-public class PagePanier extends PageHeader {
+public class PagePanier extends PageAbstract {
 
     // * Constructor ** //
     public PagePanier(WebDriver driver){

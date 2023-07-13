@@ -2,13 +2,13 @@ package com.eql.shopizer.pageobject;
 
 import org.openqa.selenium.WebDriver;
 
-public class PageHeader {
+public class PageAbstract {
 
     //  Variables  //
     public static WebDriver driver;
 
     //  Constructeur  //
-    public PageHeader(WebDriver driver){
+    public PageAbstract(WebDriver driver){
         this.driver = driver;
     }
 

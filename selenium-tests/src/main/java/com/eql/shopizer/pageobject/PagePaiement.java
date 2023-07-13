@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PagePaiement extends PageHeader {
+public class PagePaiement extends PageAbstract {
 
     // * Constructor ** //
     public PagePaiement(WebDriver driver){
