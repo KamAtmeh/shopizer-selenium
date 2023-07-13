@@ -11,11 +11,16 @@ public class PageTable extends PageAbstract {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
+    // Titre page tables
+    @FindBy(tagName = "h2")
+    public WebElement titrePageTables;
+
     @FindBy(xpath = "//div[@class='mainmenu-area bg-color-1']")
     public WebElement menuProduct;
     @FindBy(xpath = "//div[@id='main_h']//li[2]//a[1]")
     public WebElement MenuTable;
-    @FindBy(xpath = "//div[@id='mainContent']//li[4]//a[1]")
+    @FindBy(xpath = "//a[contains(normalize-space(),\"Asian Wood\")]")
     public WebElement TheAsian;
     @FindBy(xpath = "//div[@id='productsContainer']//h3[@itemprop='name'][normalize-space()='Coffee table Accacia']")
     public WebElement Coffee_Table_Accacia;
