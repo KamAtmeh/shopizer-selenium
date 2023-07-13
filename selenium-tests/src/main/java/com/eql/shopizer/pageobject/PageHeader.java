@@ -1,4 +1,4 @@
-package PageObject;
+package com.eql.shopizer.pageobject;
 
 import org.openqa.selenium.WebDriver;
 

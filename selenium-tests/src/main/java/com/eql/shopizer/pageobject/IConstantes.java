@@ -1,9 +1,9 @@
-package PageObject;
+package com.eql.shopizer.pageobject;
 
 import java.time.Duration;
 import java.util.Properties;
 
-import static Utils.Toolbox.initProp;
+import static com.eql.shopizer.utils.Toolbox.initProp;
 
 public interface IConstantes {
 

@@ -1,13 +1,13 @@
-package shopizer;
+package com.eql.shopizer.test;
 
-import PageObject.IConstantes;
-import Utils.Logging;
+import com.eql.shopizer.pageobject.IConstantes;
+import com.eql.shopizer.utils.Logging;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static Utils.Toolbox.openBrowser;
+import static com.eql.shopizer.utils.Toolbox.openBrowser;
 
 public class AbstractTest extends Logging implements IConstantes {
 

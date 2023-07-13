@@ -1,18 +1,17 @@
-package Utils;
+package com.eql.shopizer.extensions;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.opentest4j.AssertionFailedError;
 
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static PageObject.PageHeader.driver;
-import static Utils.Logging.className;
+import static com.eql.shopizer.pageobject.PageHeader.driver;
+import static com.eql.shopizer.utils.Logging.className;
 
 public class ScreenshotOnFailureExtension implements TestExecutionExceptionHandler {
     @Override

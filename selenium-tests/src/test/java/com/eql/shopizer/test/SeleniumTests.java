@@ -1,17 +1,16 @@
-package shopizer;
+package com.eql.shopizer.test;
 
-import PageObject.PageAccueil;
-import PageObject.PagePaiement;
-import PageObject.PagePanier;
-import PageObject.PageTable;
-import Utils.ScreenshotOnFailureExtension;
-import org.junit.jupiter.api.Assertions;
+import com.eql.shopizer.extensions.ScreenshotOnFailureExtension;
+import com.eql.shopizer.pageobject.PageAccueil;
+import com.eql.shopizer.pageobject.PagePaiement;
+import com.eql.shopizer.pageobject.PagePanier;
+import com.eql.shopizer.pageobject.PageTable;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static Utils.Toolbox.*;
+import static com.eql.shopizer.utils.Toolbox.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ScreenshotOnFailureExtension.class)
@@ -21,7 +20,7 @@ public class SeleniumTests extends AbstractTest {
     public void utilisationPanierTest() throws Throwable {
         LOGGER.info("Vérification du titre du site");
         PageAccueil pageAccueil = new PageAccueil(driver);
-        assertEquals("Importa", driver.getTitle(), "[KO] Le titre de la page n'est pas correct");
+        assertEquals("Importa2", driver.getTitle(), "[KO] Le titre de la page n'est pas correct");
         LOGGER.info("Connexion réussie");
         LOGGER.info("Vérification que le panier est vide");
         assertEquals("Panier d'achat (0)", pageAccueil.panier.getText(), "[KO] L'affichage du titre du panier n'est pas correct");
@@ -57,8 +56,10 @@ public class SeleniumTests extends AbstractTest {
 
     @Test
     public void verificationTableTest(){
+        LOGGER.info("Vérification du titre du site");
+        PageAccueil pageAccueil = new PageAccueil(driver);
         assertEquals("Importa", driver.getTitle(), "[KO] Le titre de la page n'est pas correct");
-        LOGGER.info("connexion réussi");
+        LOGGER.info("Connexion réussie");
         LOGGER.info("page produit");
         PageTable pageTable = new PageTable(driver);
         WebElement menuProductElement = pageTable.menuProduct;
