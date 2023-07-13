@@ -32,7 +32,7 @@ public class SeleniumTests extends AbstractTest {
         selectProduct(wait, "Asian rosewood console");
         waitForPageToLoad(wait);
         LOGGER.info("Vérification que le nombre d'articles dans le panier est de 1");
-        assertEquals("Panier d'achat (1)", pageAccueil.panier.getText());
+        assertEquals("Panier d'achat (1)", pageAccueil.panier.getText(), "Le panier d'achat n'a pas été incrémenté");
         LOGGER.info("Produit ajouté au panier");
         LOGGER.info("Clic sur paiement pour accéder au panier");
         moveToElement(actions, pageAccueil.panier);
@@ -41,13 +41,13 @@ public class SeleniumTests extends AbstractTest {
         PagePanier pagePanier = new PagePanier(driver);
         assertEquals("Revoir votre commande", pagePanier.titreRecapPanier.getText(), "[KO] Le titre de la page du panier n'est pas bon");
         LOGGER.info("Vérification de la présence du tableau récapitulaif de la commande");
-        assertTrue(pagePanier.tableauRecapPanier.isDisplayed());
+        assertTrue(pagePanier.tableauRecapPanier.isDisplayed(), "[KO] Le tableau récapitulatif n'est pas affiché");
         LOGGER.info("Vérification de la présence d'un champ quantité");
-        assertTrue(pagePanier.modifProduct.isDisplayed());
+        assertTrue(pagePanier.modifProduct.isDisplayed(), "[KO] Le champ quantité n'est pas affiché");
         LOGGER.info("Vérification de la présence du prix du produit");
-        assertTrue(pagePanier.prixArticlePanier.isDisplayed());
+        assertTrue(pagePanier.prixArticlePanier.isDisplayed(), "[KO] Le champ prix du produit n'est pas affiché");
         LOGGER.info("Vérification de la présence du total de la section");
-        assertTrue(pagePanier.totalArticlePanier.isDisplayed());
+        assertTrue(pagePanier.totalArticlePanier.isDisplayed(), "[KO] Le champ total n'est pas affiché");
         LOGGER.info("Doubler la quantité de l'article choisi");
         setValue(wait, pagePanier.modifProduct, quantiteProduit);
         LOGGER.info("Vérification que le nombre de produit est " + quantiteProduit);
