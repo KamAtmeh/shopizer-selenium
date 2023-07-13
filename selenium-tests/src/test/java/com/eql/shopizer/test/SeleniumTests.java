@@ -27,7 +27,7 @@ public class SeleniumTests extends AbstractTest {
         LOGGER.info("Vérification que le panier est vide");
         assertEquals("Panier d'achat (0)", pageAccueil.panier.getText(), "[KO] L'affichage du titre du panier n'est pas correct");
         LOGGER.info("Vérification que le texte Ajouter au panier");
-        assertEquals("Ajouter au panier", pageAccueil.product1.getText());
+        assertEquals("Ajouter au panier", pageAccueil.product1.getText(), "[KO] Le texte Ajouter un panier n'est pas correct");
         LOGGER.info("Clic sur Ajouter au panier pour le 1er produit");
         selectProduct(wait, "Asian rosewood console");
         waitForPageToLoad(wait);
