@@ -71,6 +71,7 @@ public class Toolbox extends Logging {
                 System.setProperty("webdriver.ie.driver", "src/main/resources/drivers/msedgedriver.exe");
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments(options);
+                if(headless){edgeOptions.addArguments("--headless");} // run in headless if needed
                 driver = new EdgeDriver();
                 break;
 
